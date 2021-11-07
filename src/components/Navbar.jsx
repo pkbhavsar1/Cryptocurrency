@@ -6,7 +6,7 @@ import logo from '../images/cryptocurrency.png'
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
                 <Link to="/" style={{"textDecoration":"none"}}>
                     <p className="navbar-brand" href="/">

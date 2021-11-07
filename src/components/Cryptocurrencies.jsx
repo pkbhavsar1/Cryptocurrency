@@ -1,23 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import millify from 'millify';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
 import { useGetCoinsQuery } from '../app/services/cryptoApi';
 import { Cryptocard } from '../components';
 
 const Cryptocurrencies = ({simplified}) => {
     const count = simplified ? 10 : 100;
-    const {data:cryptosList, isFetching, error} = useGetCoinsQuery(count)
-    // const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
+    const {data:cryptosList, isFetching} = useGetCoinsQuery(count)
     const [searchTerm, setSearchTerm] = useState('');
 
-    console.log("Search",searchTerm);
+    // console.log("Search",searchTerm);
 
     return (
         <>
-            <div className="row row-cols-4 mt-3">
+            <div className="d-flex justify-content-between">
             {
                 !simplified && (
-                    <div className="col-12 mb-2 col-sm-12">
+                    <div className="m-2">
                         <div className="input-group input-group-lg mt-3 btn-success bg-dark">
                             <span className="input-group-text" id="inputGroup-sizing-lg">Search</span>
                             <input type="text" className="form-control bg-dark text-white" placeholder="Search Crypto Currency" onChange={(e)=>setSearchTerm(e.target.value)}/>
@@ -30,15 +27,17 @@ const Cryptocurrencies = ({simplified}) => {
                                 <span className="visually-hidden">Loading...</span>
                             </div>
                         </div>):
-                        (<>{
+                        (<div className="row row-cols-4">{
+                            // <div row-cols-4>
                             cryptosList.data.coins
                             .filter((coin)=>coin.name.toLowerCase().includes(searchTerm))
                             .map((coin)=>(
-                                <div key={coin.id} className="col">
+                                <div key={coin.id}>
                                     <Cryptocard coin={coin}/>
                                 </div>
                             ))
-                        }</>)}
+                            // </div>
+                        }</div>)}
             </div>
         </>
     )

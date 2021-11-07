@@ -7,10 +7,10 @@ const App = () => {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-3 bg-dark sticky-top">
+                <div className="col-3 bg-dark">
                     <Navbar/>
                 </div>
-                <div className="col-9 bg-success">
+                <div className="col bg-success p-2">
                     <Switch>
                         <Route exact path="/">
                             <Homepage />
@@ -30,7 +30,7 @@ const App = () => {
                     </Switch>
                 </div>
             </div>
-            <div className="row">
+            <div className="row mt-5">
                 <Footer/>
             </div>
         </div>

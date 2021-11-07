@@ -1,28 +1,60 @@
-import React from 'react'
-// import { useGetCryptoNewsQuery } from '../app/services/cryptoNews'
+import moment from 'moment';
+import React, { useState } from 'react'
+import { useGetCryptoNewsQuery } from '../app/services/cryptoNews'
+import { DropdownButton, Dropdown } from 'react-bootstrap'
+import { useGetCoinsQuery } from '../app/services/cryptoApi';
+import {Loader} from '../components'
 
 
-const News = (simplified) => {
-    // const {data:cryptoNews, isFetching} = useGetCryptoNewsQuery({newsCategory:'Cryptocurrency', count: simplified?10:100});
-    // console.log("NEWS",cryptoNews);
-    // if(!cryptoNews?.value) return 'Loading.....'
+const News = ({ simplified }) => {
+    const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
+    const {data} = useGetCoinsQuery(100)
+    const { data: cryptoNews, isFetching } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 4 : 12 });
+    const demoImage = `https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News`;
     return (
-        <div>
-            <div className="card mb-5" style={{maxWidth:"540px"}}>
-                <div className="row g-0">
-                    <div className="col-md-4">
-                        <img src={`https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News`} className="img-fluid rounded-start" alt="..."/>
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <>
+            {
+                !simplified && (
+                    <DropdownButton 
+                        id="dropdown-basic-button" 
+                        title={newsCategory} 
+                        variant="success">
+                        {data?.data?.coins?.map((currency, i) => 
+                            <Dropdown.Item key={i} 
+                                value={currency?.name} 
+                                onClick={value=>setNewsCategory(currency.name)}>{currency?.name}</Dropdown.Item>
+                            )}
+                    </DropdownButton>
+                )
+            }
+
+
+            {
+                isFetching || !cryptoNews.value ? (
+                    <Loader/>
+                ) : (<div className="row row-cols-2">
+                    {
+                        cryptoNews.value.map((news, i) => (
+                            <div key={i} className="card m-4" style={{ width: "500px" }}>
+                                <a href={news.url} style={{ textDecoration: "none" }}>
+                                    <h5 className="card-title list-inline-item mt-3 card-header w-100 shadow-lg p-2 text-dark">{news.name}</h5>
+                                    <div className="card-body">
+                                        <img src={news?.image?.thumbnail?.contentUrl || demoImage} className="img-fluid float-start m-3" alt="..." style={{ height: "180px" }} />
+                                        {/* <img src={`https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News`} alt=".." className="rounded-circle list-inline-item" style={{height="50px"}}/> */}
+                                        <p className="card-text mt-3 text-dark">{news.description.length > 150 ? `${news.description.substring(0, 145)}...` : news.description}</p>
+                                    </div>
+                                </a>
+                                <div className="card-footer list-item">
+                                    <img src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} className="img-fluid rounded-circle float-start list-inline-item" alt="..." style={{ height: "30px" }} />
+                                    <p className="list-inline-item">{news.provider[0]?.name}</p>
+                                    <p className="card-text list-inline-item float-end"><small className="text-muted">{moment(news.datePublished).startOf('ss').fromNow()}</small></p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>)
+            }
+        </>
     )
 }
 

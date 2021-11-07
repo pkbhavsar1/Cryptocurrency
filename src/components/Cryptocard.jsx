@@ -5,8 +5,8 @@ import './components.css'
 
 const Cryptocard = ({coin:{id,name, symbol,rank, iconUrl, price, marketCap, change},}) => {
     return (
-        <div className="w-100" key={id}>
-            <Link to={`/props/${id}`}>
+        <div className="table" key={id}>
+            <Link to={`/crypto/${id}`}>
                 <div className="card text-dark bg-light mb-3 card-header rounded"  style={{maxWidth:"100%"}}>
                     <h6 className="m-auto w-100">
                         {name.length>15?

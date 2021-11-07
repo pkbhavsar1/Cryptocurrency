@@ -12,10 +12,19 @@ export const cryptoApi = createApi({
     getCoins: builder.query({
       query: (count) => `/coins?limit=${count}`,
     }),
+    getCryptoDetails: builder.query({
+      query: (coinId) => `/coin/${coinId}`,
+    }),
+    getCryptoHistory: builder.query({
+      query: ({ coinId, timeperiod }) => `coin/${coinId}/history/${timeperiod}`,
+    }),
+    getExchanges: builder.query({
+      query: () => `/exchanges`,
+    }),
   }),
 })
 
-export const { useGetCoinsQuery } = cryptoApi;
+export const { useGetCoinsQuery, useGetCryptoHistoryQuery, useGetCryptoDetailsQuery, useGetExchangesQuery } = cryptoApi;
 
 // import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // const cryptoApiHeaders = {
