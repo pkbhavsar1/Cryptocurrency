@@ -3,6 +3,7 @@ import millify from 'millify';
 import { useGetExchangesQuery } from '../app/services/cryptoApi';
 import { MdOutlineOpenInNew } from 'react-icons/md'
 import { Loader } from '../components';
+import { Link } from 'react-router-dom';
 
 const Exchanges = () => {
     const { data, isFetching } = useGetExchangesQuery();
@@ -30,7 +31,7 @@ const Exchanges = () => {
                     <td>${millify(exchange?.volume)}</td>
                     <td>${millify(exchange?.numberOfMarkets)}</td>
                     <td>${millify(exchange?.marketShare)}%</td>
-                    <td><a href={exchange?.websiteUrl} target="_blank"><MdOutlineOpenInNew/></a></td>
+                    <td><Link to={exchange?.websiteUrl} target="_blank"><MdOutlineOpenInNew/></Link></td>
                 </tr>)}
             </tbody>
         </table>

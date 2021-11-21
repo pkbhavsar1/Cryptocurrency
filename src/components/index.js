@@ -8,3 +8,5 @@ export {default as News} from './News';
 export { default as Cryptocard} from './Cryptocard';
 export {default as Loader} from './Loader';
 export {default as LineChart} from './LineChart'
+export {default as Feedback} from './Feedback'
+export {default as Contact} from './Contact'

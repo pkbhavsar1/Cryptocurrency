@@ -1,5 +1,6 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2';
+import { Col } from 'react-bootstrap';
 
 const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     const coinPrice = [];
@@ -28,7 +29,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
             yAxes: [
                 {
                     ticks: {
-                        beginAtZero:true,
+                        beginAtZero: true,
                     },
                 },
             ],
@@ -36,14 +37,16 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     };
 
     return (
-        <div className="bg-white mb-5">
-            <div className="display-6 text-center mb-5">{coinName} Price Chart</div>
-            <div className="container mb-3">
-                <b className="m-4">Change: {coinHistory?.data?.change}%</b>
-                <b>Current {coinName} Price: $ {currentPrice}</b>
+        <Col>
+            <div className="bg-white mb-5">
+                <div className="display-6 text-center mb-5">{coinName} Price Chart</div>
+                <div className="container mb-3">
+                    <b className="m-4">Change: {coinHistory?.data?.change}%</b>
+                    <b>Current {coinName} Price: $ {currentPrice}</b>
+                </div>
+                <Line data={data} options={options} />
             </div>
-            <Line data={data} options={options}/>
-        </div>
+        </Col>
     )
 }
 

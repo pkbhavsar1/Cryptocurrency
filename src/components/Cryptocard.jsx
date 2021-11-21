@@ -3,11 +3,11 @@ import millify from 'millify';
 import { Link } from 'react-router-dom';
 import './components.css'
 
+
 const Cryptocard = ({coin:{id,name, symbol,rank, iconUrl, price, marketCap, change},}) => {
     return (
-        <div className="table" key={id}>
             <Link to={`/crypto/${id}`}>
-                <div className="card text-dark bg-light mb-3 card-header rounded"  style={{maxWidth:"100%"}}>
+                <div className="card text-dark bg-light mb-3 card-header rounded"  style={{maxWidth:"100%", minHeight:"100%"}}>
                     <h6 className="m-auto w-100">
                         {name.length>15?
                             <div className="card-header h-50 shadow-lg p-2 bg-body rounded">{`${rank}.${symbol}`}
@@ -29,7 +29,6 @@ const Cryptocard = ({coin:{id,name, symbol,rank, iconUrl, price, marketCap, chan
                     </div>
                 </div>
             </Link>
-        </div>
     )
 }
 

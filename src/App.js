@@ -1,39 +1,44 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom';
 import './components/components.css';
-import { Navbar, Footer, Exchanges, Homepage, Cryptocurrencies, CryptoDetails, News } from './components';
+import { Navbar, Footer, Exchanges, Homepage, Cryptocurrencies, CryptoDetails, News, Feedback, Contact } from './components';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const App = () => {
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-3 bg-dark">
-                    <Navbar/>
-                </div>
-                <div className="col bg-success p-2">
-                    <Switch>
-                        <Route exact path="/">
-                            <Homepage />
-                        </Route>
-                        <Route exact path="/exchanges">
-                            <Exchanges />
-                        </Route>
-                        <Route exact path="/cryptocurrencies">
-                            <Cryptocurrencies />
-                        </Route>
-                        <Route exact path="/crypto/:coinId">
-                            <CryptoDetails />
-                        </Route>
-                        <Route exact path="/news">
-                            <News />
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
-            <div className="row mt-5">
-                <Footer/>
-            </div>
-        </div>
+    <Container fluid>
+        <Row>
+            <Col xl={3} xs={12} sm={12} className="bg-dark"><Navbar/></Col>
+            <Col xl={9} md={12} xs={12} sm={12} className="bg-success" style={{minHeight:"100vh"}}>
+                <Switch>
+                    <Route exact path="/">
+                        <Homepage />
+                    </Route>
+                    <Route exact path="/exchanges">
+                        <Exchanges />
+                    </Route>
+                    <Route exact path="/cryptocurrencies">
+                        <Cryptocurrencies />
+                    </Route>
+                    <Route exact path="/crypto/:coinId">
+                        <CryptoDetails />
+                    </Route>
+                    <Route exact path="/news">
+                        <News />
+                    </Route>
+                    <Route exact path="/feedback">
+                        <Feedback/>
+                    </Route>
+                    <Route exact path="/contact">
+                        <Contact/>
+                    </Route>
+                </Switch>
+            </Col>
+        </Row>
+        <Row className="bg-dark">
+            <Footer/>
+        </Row>
+    </Container>
     )
 }
 
