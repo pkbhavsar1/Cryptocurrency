@@ -5,7 +5,8 @@ import { useSendFeedbackMutation } from '../app/services/feedbackApi';
 
 
 const Feedback = () => {
-    const [sendFeedbackData, responseInfo] = useSendFeedbackMutation()
+    const [sendFeedbackData, responseInfo] = useSendFeedbackMutation();
+    
     const [formData, setFormData] = useState({
         like_comment : '',
         miss : '',

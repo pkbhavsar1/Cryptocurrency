@@ -89,36 +89,3 @@ const Header = () => {
 }
 
 export default Header
-                    // <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="sticky-top">
-                    //     <Container>
-                    //         {/* <Link to="/">
-                    //             <img
-                    //                 alt=""
-                    //                 src={logo}
-                    //                 width="50"
-                    //                 height="50"
-                    //                 className="d-inline-block align-top"
-                    //             />
-                    //         </Link> */}
-                    //         <Link href="/" style={{ textDecoration: "none" }}>
-                    //             <Navbar.Brand href="/" className="border rounded-pill border-white p-2">CryptoGen</Navbar.Brand>
-                    //         </Link>
-                    //         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    //         <Navbar.Collapse id="responsive-navbar-nav">
-                    //             <Nav className="me-auto">
-                    //                 <Link href="/" style={{ textDecoration: "none" }}>
-                    //                     <Nav.Link className="mx-4 text-white">Home</Nav.Link>
-                    //                 </Link>
-                    //                 <Link href="/cryptocurrencies" style={{ textDecoration: "none" }}>
-                    //                     <Nav.Link className="mx-4 text-white">Cryptocurrencies</Nav.Link>
-                    //                 </Link>
-                    //                 <Link href="/exchanges" style={{ textDecoration: "none" }}>
-                    //                     <Nav.Link className="mx-4 text-white">Exchanges</Nav.Link>
-                    //                 </Link>
-                    //                 <Link href="/news" style={{ textDecoration: "none" }}>
-                    //                     <Nav.Link className="mx-4 text-white">News</Nav.Link>
-                    //                 </Link>
-                    //             </Nav>
-                    //         </Navbar.Collapse>
-                    //     </Container>
-                    // </Navbar>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom';
 import './components/components.css';
-import { Navbar, Footer, Exchanges, Homepage, Cryptocurrencies, CryptoDetails, News, Feedback, Contact } from './components';
+import { Navbar, Footer, Exchanges, Homepage, Cryptocurrencies, CryptoDetails, News, Feedback, Contact, About } from './components';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const App = () => {
@@ -31,6 +31,9 @@ const App = () => {
                     </Route>
                     <Route exact path="/contact">
                         <Contact/>
+                    </Route>
+                    <Route exct path="/about">
+                        <About/>
                     </Route>
                 </Switch>
             </Col>

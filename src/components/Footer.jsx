@@ -13,6 +13,9 @@ const Footer = () => {
                 <Link to="/contact" style={{ textDecoration: "none" }}>
                     <p className="text-center text-muted">Contact</p>
                 </Link>
+                <Link to="/about" style={{ textDecoration: "none" }}>
+                    <p className="text-center text-muted">About</p>
+                </Link>
             </Stack>
         </footer>
     )
