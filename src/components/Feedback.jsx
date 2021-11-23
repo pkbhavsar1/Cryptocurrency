@@ -33,6 +33,7 @@ const Feedback = () => {
         e.preventDefault();
         sendFeedbackData(formData)
         setVisible(true);
+        console.log("Feedback Response", responseInfo)
     }
 
     const resetFeedback = e =>{

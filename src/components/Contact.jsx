@@ -43,10 +43,10 @@ const Contact = () => {
     const Check=e=>{
         if (checkValue===true) {
             setCheckValue(false)
-            setContactForm({...contactForm, call:"NO"})
+            setContactForm({...contactForm, call:"YES"})
         }else{
             setCheckValue(true)
-            setContactForm({...contactForm, call:"YES"})
+            setContactForm({...contactForm, call:"NO"})
         }
         console.log(contactForm.check);
     }
@@ -55,6 +55,7 @@ const Contact = () => {
         e.preventDefault();
         sendQuery(contactForm);
         console.log("CF", contactForm);
+        console.log("Contact Response", reponseInfo)
     }
 
 
