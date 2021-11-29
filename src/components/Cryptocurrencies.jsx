@@ -22,7 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
                         </div>
                     )
                 }
-                <Row xs={1} md={2} xl={4}>{
+                <Row xs={1} md={2} xl={4} className="mb-5">{
                     cryptosList.data.coins
                         .filter((coin) => coin.name.toLowerCase().includes(searchTerm))
                         .map((coin) => (

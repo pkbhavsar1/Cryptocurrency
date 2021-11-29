@@ -3,11 +3,11 @@ import { Row, Col, Container, Stack, Form, FloatingLabel, Button } from 'react-b
 import { ImOffice, ImMap2, ImPhone } from 'react-icons/im';
 import { AiOutlineMail } from 'react-icons/ai';
 import { MdAccessTimeFilled, MdMessage } from 'react-icons/md';
-import { useSendQueryMutation } from '../app/services/contact';
+import { useSendQueryDetailsMutation } from '../app/services/feedbackContactApi';
 
 const Contact = () => {
 
-    const [sendQuery, reponseInfo] = useSendQueryMutation();
+    const [sendQuery, {isFetching, isLoading, isSuccess}] = useSendQueryDetailsMutation();
     const [checkValue, setCheckValue] = useState(true);
 
     const [contactForm, setContactForm] = useState({
@@ -52,10 +52,13 @@ const Contact = () => {
     }
 
     const Submit=e=>{
-        e.preventDefault();
-        sendQuery(contactForm);
-        console.log("CF", contactForm);
-        console.log("Contact Response", reponseInfo)
+        try {
+            e.preventDefault();
+            sendQuery(contactForm);
+            console.log("CF", contactForm);
+        } catch (error) {
+            console.log("Contact Response", isSuccess)
+        }
     }
 
 
@@ -141,9 +144,15 @@ const Contact = () => {
                         <Form.Group className="mb-4" id="formGridCheckbox">
                             <Form.Check type="checkbox" value={checkValue} label="Call me if neccessary" onClick={Check} />
                         </Form.Group>
-                        <div className="d-grid gap-2">
-                            <Button type="submit" variant="dark" size="lg">Send Message</Button>
-                        </div>
+                        {
+                            isFetching || isLoading?
+                            <div className="d-grid gap-2">
+                                <Button type="submit" variant="dark" size="lg">Please Wait..</Button>
+                            </div>:
+                            <div className="d-grid gap-2">
+                                <Button type="submit" variant="dark" size="lg" className={isSuccess?'disabled':''}>{isSuccess ? 'Message Recieved' : 'Send Message'}</Button>
+                            </div>
+                        }
                     </Form>
                 </Col>
             </Row>

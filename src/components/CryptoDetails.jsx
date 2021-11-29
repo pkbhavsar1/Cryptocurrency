@@ -111,11 +111,11 @@ const CryptoDetails = () => {
                 </Col>
             </Row>
             <Row xl={12}>
-                <Col xl="6" md="12">
+                <Col xl="6" md="12" className="mb-5">
                     <h1 className="text-white">What is {cryptoDetails?.name}?</h1>
                     <div className="text-white">{HTMLReactParser(cryptoDetails?.description)}</div>
                 </Col>
-                <Col xl="6" md="12">
+                <Col xl="6" md="12" className="mb-5">
                     <table className="table table-striped table-hover table-borderless table-light border border-2 border-dark h-75">
                         <thead>
                             <tr>

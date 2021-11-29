@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { contactApi } from './services/contact';
 
 import { cryptoApi } from './services/cryptoApi';
 import { cryptoNewsApi } from './services/cryptoNews';
-import { feedbackApi } from './services/feedbackApi';
+import { backendApi} from './services/backendApi';
+import { feedbackContactApi } from './services/feedbackContactApi';
 
 export default configureStore({
     reducer:{
         [cryptoApi.reducerPath]:cryptoApi.reducer,
         [cryptoNewsApi.reducerPath]:cryptoNewsApi.reducer,
-        [feedbackApi.reducerPath]:feedbackApi.reducer,
-        [contactApi.reducerPath]:contactApi.reducer,
+        [backendApi.reducerPath]:backendApi.reducer,
+        [feedbackContactApi.reducerPath]:feedbackContactApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(cryptoApi.middleware, cryptoNewsApi.middleware, feedbackApi.middleware, contactApi.middleware),
+    getDefaultMiddleware().concat(cryptoApi.middleware, cryptoNewsApi.middleware,  backendApi.middleware, feedbackContactApi.middleware),
 });
 

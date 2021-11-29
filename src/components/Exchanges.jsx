@@ -1,9 +1,9 @@
 import React from 'react';
 import millify from 'millify';
 import { useGetExchangesQuery } from '../app/services/cryptoApi';
-import { MdOutlineOpenInNew } from 'react-icons/md'
+import { FcLink } from 'react-icons/fc'
 import { Loader } from '../components';
-import { Link } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
 
 const Exchanges = () => {
     const { data, isFetching } = useGetExchangesQuery();
@@ -12,7 +12,7 @@ const Exchanges = () => {
     if (isFetching) return (<Loader/>);
 
     return (
-        <table className="table table-hover table-light w-100">
+        <Table variant="light" style={{marginBottom:"80px"}} responsive hover>
             <thead>
                 <tr>
                     <th>Rank</th>
@@ -31,10 +31,10 @@ const Exchanges = () => {
                     <td>${millify(exchange?.volume)}</td>
                     <td>${millify(exchange?.numberOfMarkets)}</td>
                     <td>${millify(exchange?.marketShare)}%</td>
-                    <td><Link to={exchange?.websiteUrl} target="_blank"><MdOutlineOpenInNew/></Link></td>
+                    <td onClick={()=> window.open(exchange?.websiteUrl, "_blank")}><FcLink className=""/></td>
                 </tr>)}
             </tbody>
-        </table>
+        </Table>
     )
 }
 

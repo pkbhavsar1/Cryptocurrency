@@ -15,7 +15,7 @@ const Homepage = () => {
         );
     }
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <header className="display-5 text-white shadow-lg p-3 mb-5 rounded" style={{ fontWeight: 500 }}>Global Crypto Statistic</header>
             </Row>
@@ -57,13 +57,13 @@ const Homepage = () => {
                 </Col>
             </Row>
             <Row>
-                <header className="display-5 text-white shadow-lg p-3 mb-5 rounded" style={{ fontWeight: 500 }}>TOP 10 Cryptocurrencies in the world! <Link to="/cryptocurrencies"><h5 className="text-end"><span className="badge bg-dark rounded-pill">Show more</span></h5></Link></header>
+                <header className="display-5 text-white shadow-lg p-3 mb-5 rounded" style={{ fontWeight: 500 }}>TOP 10 Cryptocurrencies in the world! <Link to="/main/cryptocurrencies"><h5 className="text-end"><span className="badge bg-dark rounded-pill">Show more</span></h5></Link></header>
             </Row>
             <Container fluid>
                 <Cryptocurrencies simplified />
             </Container>
             <Row>
-                <header className="display-5 text-white shadow-lg p-3 mb-5 rounded" style={{ fontWeight: 500 }}>Latest Crypto NEWS! <Link to="/news"><h5 className="text-end"><span className="badge bg-dark rounded-pill">Show more</span></h5></Link></header>
+                <header className="display-5 text-white shadow-lg p-3 mb-5 rounded" style={{ fontWeight: 500 }}>Latest Crypto NEWS! <Link to="/main/news"><h5 className="text-end"><span className="badge bg-dark rounded-pill">Show more</span></h5></Link></header>
             </Row>
             <Container fluid>
                 <News simplified />
