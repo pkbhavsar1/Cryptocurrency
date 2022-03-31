@@ -25,5 +25,3 @@ export const cryptoApi = createApi({
 })
 
 export const { useGetCoinsQuery, useGetCryptoHistoryQuery, useGetCryptoDetailsQuery, useGetExchangesQuery } = cryptoApi;
-
-// // kunal.pagariya@gmail.com
